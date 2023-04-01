@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class ProfileHeader extends StatelessWidget {
   final String name;
   final String email;
-  const ProfileHeader({super.key, required this.email, required this.name});
+  final String image;
+  const ProfileHeader(
+      {super.key,
+      required this.email,
+      required this.name,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +19,10 @@ class ProfileHeader extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.all(20),
-            child: const CircleAvatar(
+            child: CircleAvatar(
               radius: 50,
               backgroundColor: Colors.red,
-              foregroundImage: AssetImage("assets/images/DefaultProfile.png"),
+              foregroundImage: NetworkImage(image),
             ),
           ),
           Text(

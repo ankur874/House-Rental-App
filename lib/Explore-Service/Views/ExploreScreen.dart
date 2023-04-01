@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:house_rental_app/Components/PropertyCard.dart';
 import 'package:house_rental_app/Constants.dart';
 import 'package:house_rental_app/Explore-Service/Views/FilterScreen.dart';
 import 'package:house_rental_app/Explore-Service/Views/shared/Search.dart';

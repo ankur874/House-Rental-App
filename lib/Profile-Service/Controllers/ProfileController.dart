@@ -73,7 +73,7 @@ class ProfileController extends GetxController {
         "phone": phone,
         "age": age,
         "gender": gender.value == 0 ? "Male" : "Female",
-        "marital_status": married.value
+        "marital_status": married.value,
       }),
     );
     // UserModel currUser = UserModel.fromJson(jsonDecode(response.body)["data"]);
@@ -81,6 +81,19 @@ class ProfileController extends GetxController {
     print(jsonDecode(response.body)["data"]);
     getUser();
     isLoading.value = false;
+  }
+
+  void switchUserState() async {
+    var userId = prefs.read("user_id");
+    var response = await http.post(
+      Uri.parse("$BASE_URL/api/users/profile/$userId"),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, dynamic>{"is_host": user.value.isHost}),
+    );
+    print(jsonDecode(response.body)["data"]);
+    getUser();
   }
 
   openImage() async {

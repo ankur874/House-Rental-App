@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:house_rental_app/Components/PropertyCard.dart';
-import 'package:house_rental_app/Components/PurchaseCard.dart';
+
 import 'package:house_rental_app/Constants.dart';
+import 'package:house_rental_app/Profile-Service/Views/shared/PurchaseCard.dart';
 
 class PurchaseHistory extends StatelessWidget {
   const PurchaseHistory({super.key});

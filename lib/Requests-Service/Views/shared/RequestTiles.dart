@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:house_rental_app/Property-Service/PropertyResponse.dart';
+
+import '../../Models/RequestModel.dart';
+
+
 class RequestTile extends StatelessWidget {
-  final String name;
-  const RequestTile({super.key, required this.name});
+  final Request request;
+  const RequestTile({super.key, required this.request});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +18,13 @@ class RequestTile extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 23,
-            foregroundImage: AssetImage("assets/images/DefaultProfile.png"),
+            foregroundImage: NetworkImage(request.propertyId!.photos![0].url!),
           ),
           const SizedBox(
             width: 18,
           ),
           Text(
-            name,
+            request.propertyId!.title!,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           const Spacer(),

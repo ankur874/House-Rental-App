@@ -35,6 +35,7 @@ class ProfileScreen extends StatelessWidget {
                     //   height: 35,
                     // ),
                     ProfileHeader(
+                        image: "",
                         email: controller.user.value.email.toString(),
                         name: controller.user.value.name.toString()),
                     Container(

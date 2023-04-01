@@ -8,6 +8,10 @@ const LOGIN_REQUEST = "/api/users/login";
 const GET_ALL_PROPERTIES_REQUEST = "/api/properties";
 const GET_PROPERTIES_NEAR_YOU_REQUEST = "/api/properties/getPropertyByLocation";
 const GET_TOP_RATED_PROPERTIES = "/api/properties/getTopRatedProperties";
+const UPLOAD_PROPERTY = "/api/properties/";
+const SAVE_PROPERTY = "/api/users/addtofav";
+const UNSAVE_PROPERTY = "/api/users/removefromfav";
+const CREATE_REQUEST = "/api/requests";
 
 //----------------------------------COLORS/GRADIENT--------------------------------------------//
 

@@ -3,9 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:house_rental_app/Authentication-Service/Views/WelcomeScreen.dart';
+import 'package:house_rental_app/Profile-Service/Controllers/ProfileController.dart';
 import 'package:house_rental_app/Profile-Service/Views/EditDetailsScreen.dart';
 import 'package:house_rental_app/Profile-Service/Views/ProfileDetailScreen.dart';
 import 'package:house_rental_app/Profile-Service/Views/PurchaseHistory.dart';
+import 'package:house_rental_app/Profile-Service/Views/SwitchScreen.dart';
 import 'package:house_rental_app/Profile-Service/Views/shared/Option.dart';
 
 class ProfileOptions extends StatelessWidget {
@@ -13,6 +15,13 @@ class ProfileOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.find();
+    var isHost;
+    if (profileController.user.value.isHost == false) {
+      isHost = "Hosting";
+    } else {
+      isHost = "Buyer";
+    }
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
@@ -37,8 +46,11 @@ class ProfileOptions extends StatelessWidget {
               onTap: () => Get.to(PurchaseHistory()),
               child: Option(text: "Purchase History", icon: Icon(Icons.paid))),
           InkWell(
+            onTap: () => {
+              Get.to(SwitchScreen()),
+            },
             child: Option(
-                text: "Switch to hosting",
+                text: "Switch to ${isHost} ",
                 icon: SvgPicture.asset("assets/icons/Toggle.svg")),
           )
         ],

@@ -30,6 +30,7 @@ class ProfileDetailScrenn extends StatelessWidget {
           () => Column(
             children: [
               ProfileHeader(
+                  image: "",
                   name: controller.user.value.name.toString(),
                   email: controller.user.value.email.toString()),
               Container(

@@ -3,16 +3,18 @@ import 'package:get/get.dart';
 
 import '../../Constants.dart';
 import '../../Profile-Service/Views/shared/ProfileHeader.dart';
+import '../Models/RequestModel.dart';
 
 class RequestDetailScreen extends StatelessWidget {
-  const RequestDetailScreen({super.key});
+  Request request;
+  RequestDetailScreen({required this.request});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Request",
+        title: Text(
+          request.propertyId!.title!,
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.transparent,
@@ -28,8 +30,10 @@ class RequestDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             ProfileHeader(
-              email: "temo",
-              name: "temp",
+              image: request.propertyId!.photos![0].url!,
+              name: request.propertyId!.title!,
+              email:
+                  "${request.propertyId!.city} , ${request.propertyId!.country}",
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -41,20 +45,32 @@ class RequestDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ProfileDetailTextContainer(
-                    first: "Phone",
-                    second: "9560775711",
+                    first: "Date of Request",
+                    second: request.date!,
                   ),
                   ProfileDetailTextContainer(
-                    first: "Age",
-                    second: "25",
+                    first: "Price",
+                    second: request.propertyId!.totalPrice.toString(),
                   ),
                   ProfileDetailTextContainer(
-                    first: "Gender",
-                    second: "Female",
+                    first: "Status",
+                    second: request.isPending == true
+                        ? "Pending"
+                        : request.isAccepted == true
+                            ? "Accepted"
+                            : "Rejected",
                   ),
                   ProfileDetailTextContainer(
-                    first: "Marital status",
-                    second: "Not Married",
+                    first: "Guest count",
+                    second: request.guestCount.toString(),
+                  ),
+                  ProfileDetailTextContainer(
+                    first: "Rent Start Date",
+                    second: request.startDate.toString(),
+                  ),
+                  ProfileDetailTextContainer(
+                    first: "Rent End Date",
+                    second: request.endDate.toString(),
                   ),
                 ],
               ),
